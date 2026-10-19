@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="A public Java backend learning tracker with roadmap progress, daily logs, and persistent local autosave." />
+  <title>Java Backend Tracker | Raviraj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">J</span><span>DevTrack<small>JAVA BACKEND JOURNEY</small></span></a>
+      <div class="profile-mini"><div class="avatar">RS</div><div><strong>Raviraj Singh</strong><span>Java Backend Developer</span></div></div>
+      <nav class="nav">
+        <a class="nav-link active" href="#overview"><span>◫</span> Overview</a>
+        <a class="nav-link" href="#roadmap"><span>☷</span> Learning roadmap</a>
+        <a class="nav-link" href="#daily"><span>▦</span> Daily journal</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="privacy-note"><span class="status-dot"></span><div><b>Local autosave on</b><small>No account or password</small></div></div>
+        <a class="github-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub profile ↗</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><p class="eyebrow">MY LEARNING WORKSPACE</p><h1>Java Backend Tracker</h1></div>
+        <div class="top-actions"><span class="save-status" id="saveStatus">● Saved locally</span><button class="btn btn-ghost" id="exportBtn">Export backup</button><button class="btn btn-primary" id="logTodayBtn">＋ Log today</button></div>
+      </header>
+
+      <section id="overview" class="hero">
+        <div class="hero-copy"><span class="pill"><span class="status-dot"></span> IN PROGRESS</span><h2>Build skills.<br><em>Ship your future.</em></h2><p>A transparent record of my Java, Spring Boot, DSA and backend engineering journey.</p><div class="hero-meta"><span>◷ <b id="dayCount">0</b> active days</span><span>✓ <b id="completedCount">0</b> topics completed</span><span>↗ Updated <b id="lastUpdated">today</b></span></div></div>
+        <div class="progress-orb"><div class="ring" id="mainRing"><div class="ring-inner"><strong id="mainPercent">0%</strong><span>COMPLETED</span></div></div><p>Overall roadmap progress</p><small id="progressSub">0 of 0 topics complete</small></div>
+      </section>
+
+      <section class="stats-grid">
+        <article class="stat-card"><div class="stat-icon purple">✓</div><span>Topics completed</span><strong id="statDone">0</strong><small>Across the full roadmap</small></article>
+        <article class="stat-card"><div class="stat-icon blue">◷</div><span>Topics remaining</span><strong id="statLeft">0</strong><small>Keep moving forward</small></article>
+        <article class="stat-card"><div class="stat-icon green">▦</div><span>Study sessions</span><strong id="statSessions">0</strong><small>Daily journal entries</small></article>
+        <article class="stat-card"><div class="stat-icon orange">⌁</div><span>Minutes studied</span><strong id="statMinutes">0</strong><small>Total logged study time</small></article>
+      </section>
+
+      <section id="roadmap" class="section-block">
+        <div class="section-heading"><div><p class="eyebrow">YOUR CURRICULUM</p><h2>Learning roadmap</h2><p class="muted">Mark topics complete as you learn. Your browser saves changes automatically.</p></div><div class="roadmap-tools"><input id="searchInput" type="search" placeholder="Search topics..." aria-label="Search topics"><select id="filterSelect" aria-label="Filter topics"><option value="all">All topics</option><option value="pending">Pending only</option><option value="done">Completed only</option></select></div></div>
+        <div id="roadmapList" class="roadmap-list"></div>
+      </section>
+
+      <section id="daily" class="section-block daily-section">
+        <div class="section-heading"><div><p class="eyebrow">CONSISTENCY WINS</p><h2>Daily learning journal</h2><p class="muted">Record what you studied, what you built, and what comes next.</p></div></div>
+        <form id="dailyForm" class="journal-form">
+          <div class="form-row"><label>Study date<input id="studyDate" type="date" required></label><label>Minutes studied<input id="studyMinutes" type="number" min="0" max="1440" placeholder="e.g. 90" required></label></div>
+          <label>What did you work on?<input id="studyTopic" type="text" maxlength="140" placeholder="e.g. Collections Framework, ArrayList" required></label>
+          <label>Notes / outcome<textarea id="studyNotes" rows="3" maxlength="1000" placeholder="What did you understand? What did you practise?"></textarea></label>
+          <div class="form-footer"><span class="muted tiny">Entries are saved in this browser automatically after you submit.</span><button class="btn btn-primary" type="submit">Save daily entry</button></div>
+        </form>
+        <div class="journal-heading"><h3>Recent activity</h3><button class="text-btn" id="importBtn">Import backup</button><input type="file" id="importFile" accept="application/json,.json" hidden></div>
+        <div id="journalList" class="journal-list"></div>
+      </section>
+      <footer><span>Built with HTML, CSS & JavaScript</span><span>Progress is personal. Consistency is public.</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="assets/roadmap.js"></script><script src="app.js"></script>
+</body>
+</html>
